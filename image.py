@@ -14,11 +14,10 @@ s3 = boto3.client('s3',
                     aws_secret_access_key=os.getenv('Secret_access_key'), 
                   region_name=os.getenv('region_name')
                     )
-
                     
 def images_fun(row,count):
     try:
-        img = row['images_url']
+        img = row['restaurant_logo']
         # print('Current Url: ','image_name'+str(count)+'.jpg')
         img_data = requests.get(img).content
         with open('img/image_name'+str(count)+'.jpg', 'wb') as handler:
@@ -27,7 +26,7 @@ def images_fun(row,count):
         print('error')
 
 def main():
-    with open('image.csv', 'r', encoding='utf-8') as file:
+    with open('demo.csv', 'r', encoding='utf-8') as file:
         csv_reader = csv.DictReader(file)
         count = 0
         print("start")
@@ -63,3 +62,11 @@ def main():
 if __name__ == "__main__":
     main()
     
+
+# ------------------------ Match start (https://media-cdn.) or end (.jpg) points  --------------------
+
+# import re
+
+# link = 'https://media-cdn.tripadvisor.com/media/photo-s/1d/8b/c9/41/caption.jpg'
+
+# print(re.match(r'(https://media-cdn.|https)://.*\.(jpg|png)$', link)[0])
