@@ -1,22 +1,23 @@
-import wget
-import csv
+# import wget
+# import csv
+import time
 
 
+# def images_fun(row):
+#     url = row['images_url']
+#     wget.download(url)
 
-def images_fun(row):
-    url = row['images_url']
-    wget.download(url)
-
-def main():
-    with open('image.csv', 'r', encoding='utf-8') as file:
-        csv_reader = csv.DictReader(file)
-        count = 0
-        print("start")
-        for row in csv_reader:
-            count +=1
-            images_fun(row)
+# def main():
+#     with open('image.csv', 'r', encoding='utf-8') as file:
+#         csv_reader = csv.DictReader(file)
+#         count = 0
+#         print("start")
+#         for row in csv_reader:
+#             count +=1
+#             images_fun(row)
      
 
     
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
+import time
