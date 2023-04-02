@@ -17,7 +17,7 @@ s3 = boto3.client('s3',
                     
 def images_fun(row,count):
     try:
-        img = row['restaurant_logo']
+        img = row['images_url']
         # print('Current Url: ','image_name'+str(count)+'.jpg')
         img_data = requests.get(img).content
         with open('img/image_name'+str(count)+'.jpg', 'wb') as handler:
@@ -26,15 +26,13 @@ def images_fun(row,count):
         print('error')
 
 def main():
-    with open('demo.csv', 'r', encoding='utf-8') as file:
+    with open('image.csv', 'r', encoding='utf-8') as file:
         csv_reader = csv.DictReader(file)
         count = 0
         print("start")
         for row in csv_reader:
             count +=1
             images_fun(row,count)
-
-            
         BUCKET_NAME = 'biodata-images'
         FOLDER_NAME = 'img'
 
