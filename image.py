@@ -17,9 +17,9 @@ s3 = boto3.client('s3',
                     
 def images_fun(row,count):
     try:
-        img = row['images_url']
-        # print('Current Url: ','image_name'+str(count)+'.jpg')
-        img_data = requests.get(img).content
+        img = row['restaurant_logo']
+        print('Current Url: ','image_name'+str(count)+'.jpg')
+        img_data =  requests.get(img).content
         with open('img/image_name'+str(count)+'.jpg', 'wb') as handler:
             handler.write(img_data)
     except:
