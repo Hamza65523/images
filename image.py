@@ -16,14 +16,25 @@ s3 = boto3.client('s3',
                     aws_secret_access_key=os.getenv('Secret_access_key'), 
                   region_name=os.getenv('region_name')
                     )
-                    
 def images_fun(row,count):
     try:
         img = row['restaurant_logo']
         print('Current Url: ','image_name'+str(count)+'.jpg')
-        img_data =  requests.get(img).content
-        with open('img/image_name'+str(count)+'.jpg', 'wb') as handler:
-            handler.write(img_data)
+           # make a GET request to the image URL
+        response = requests.get(img)
+        # check if the request was successful (status code 200)
+        if response.status_code == 200:
+            # save the image to a file
+            with open(f'img/image{count}.jpg', 'wb') as f:
+                f.write(response.content)
+            # increment the downloaded_images counter
+        # if the request was not successful, print an error message
+        else:
+            print(f'Error downloading image (status code {response.status_code})')
+        
+        # img_data =  requests.get(img).content
+        # with open('img/image_name'+str(count)+'.jpg', 'wb') as handler:
+        #     handler.write(img_data)
     except:
         print('error')
 
