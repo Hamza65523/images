@@ -5,9 +5,11 @@ from dotenv import load_dotenv
 import os
 import glob
 import shutil
-
+import time
 
 load_dotenv()
+
+brokenlink = []
 
 s3 = boto3.client('s3', 
                     aws_access_key_id=os.getenv('Access_key_ID'), 
@@ -26,7 +28,7 @@ def images_fun(row,count):
         print('error')
 
 def main():
-    with open('image.csv', 'r', encoding='utf-8') as file:
+    with open('demo1.csv', 'r', encoding='utf-8') as file:
         csv_reader = csv.DictReader(file)
         count = 0
         print("start")
