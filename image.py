@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 import os
 import glob
 import shutil
-import time
 
 load_dotenv()
 
@@ -22,16 +21,18 @@ def images_fun(row,count):
         img = row['restaurant_logo']
         print('Current Url: ','image_name'+str(count)+'.jpg')
            # make a GET request to the image URL
-        response = requests.get(img)
-        # check if the request was successful (status code 200)
-        if response.status_code == 200:
-            # save the image to a file
-            with open(f'img/image{count}.jpg', 'wb') as f:
-                f.write(response.content)
-            # increment the downloaded_images counter
-        # if the request was not successful, print an error message
-        else:
-            print(f'Error downloading image (status code {response.status_code})')
+        os.system(f'curl {img} > img/image{count}.jpg')
+
+        # response = requests.get(img)
+        # # check if the request was successful (status code 200)
+        # if response.status_code == 200:
+        #     # save the image to a file
+        #     with open(f'img/image{count}.jpg', 'wb') as f:
+        #         f.write(response.content)
+        #     # increment the downloaded_images counter
+        # # if the request was not successful, print an error message
+        # else:
+        #     print(f'Error downloading image (status code {response.status_code})')
     
         # img_data =  requests.get(img).content
         # with open('img/image_name'+str(count)+'.jpg', 'wb') as handler:
@@ -51,7 +52,7 @@ def main():
         BUCKET_NAME = 'biodata-images'
         FOLDER_NAME = 'img'
 
-        csv_files = glob.glob("img\image_name*.jpg")
+        csv_files = glob.glob("img\image*.jpg")
 
         for filename in csv_files:
             key = "%s/%s" % (FOLDER_NAME, os.path.basename(filename))

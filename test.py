@@ -33,14 +33,14 @@ def main():
         for row in csv_reader:
             count +=1
 
-        # print(count)
+        print(count)
         # print(count /5 )
         # print(count /5 *2)
         # print(count /5 *3)
         # print(count /5 *4)
         # print(count /5 *5)
             # if 7604>count:
-            images_fun(row,count)
+            # images_fun(row,count)
 
 
     
