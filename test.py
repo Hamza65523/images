@@ -6,7 +6,7 @@ def images_fun(row,count):
     try:
         img = row['restaurant_logo']
         print('Current Url: ','image_name'+str(count)+'.jpg')
-        os.system(f'curl {img} > image{count}.jpg')
+        os.system(f'curl {img} > img/image{count}.jpg')
            # make a GET request to the image URL
         # response = requests.get(img)
         # # check if the request was successful (status code 200)
@@ -39,8 +39,8 @@ def main():
         # print(count /5 *3)
         # print(count /5 *4)
         # print(count /5 *5)
-            if 7604>count:
-                images_fun(row,count)
+            # if 7604>count:
+            images_fun(row,count)
 
 
     
