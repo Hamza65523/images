@@ -16,6 +16,7 @@ s3 = boto3.client('s3',
                     aws_secret_access_key=os.getenv('Secret_access_key'), 
                   region_name=os.getenv('region_name')
                     )
+
 def images_fun(row,count):
     try:
         img = row['restaurant_logo']
@@ -31,7 +32,7 @@ def images_fun(row,count):
         # if the request was not successful, print an error message
         else:
             print(f'Error downloading image (status code {response.status_code})')
-        
+    
         # img_data =  requests.get(img).content
         # with open('img/image_name'+str(count)+'.jpg', 'wb') as handler:
         #     handler.write(img_data)
@@ -45,7 +46,8 @@ def main():
         print("start")
         for row in csv_reader:
             count +=1
-            images_fun(row,count)
+            if count >=7354:
+                images_fun(row,count)
         BUCKET_NAME = 'biodata-images'
         FOLDER_NAME = 'img'
 
