@@ -47,8 +47,8 @@ def main():
         print("start")
         for row in csv_reader:
             count +=1
-            if count >=7354:
-                images_fun(row,count)
+            #if count >=7354:
+            images_fun(row,count)
         BUCKET_NAME = 'biodata-images'
         FOLDER_NAME = 'img'
 
